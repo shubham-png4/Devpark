@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevSpark - Learn Coding Visually</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fa-solid fa-cubes"></i> DevSpark</div>
+        <div class="score-board">
+            <span><i class="fa-solid fa-fire"></i> Streak: <strong id="streak-val">1</strong> days</span>
+            <span><i class="fa-solid fa-trophy"></i> XP: <strong id="xp-val">0</strong></span>
+        </div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <button class="nav-btn active" onclick="switchTab('flashcards')"><i class="fa-solid fa-layer-group"></i> Animated Cards</button>
+            <button class="nav-btn" onclick="switchTab('sandbox')"><i class="fa-solid fa-code"></i> Code Sandbox</button>
+        </aside>
+
+        <section class="content-area">
+            
+            <div id="flashcards" class="tab-content active">
+                <h2>Master Python Concepts</h2>
+                <p class="subtitle">Click the card to flip and view the visual execution.</p>
+                
+                <div class="flashcard-container">
+                    <div class="flashcard" id="card" onclick="flipCard()">
+                        <div class="card-face card-front">
+                            <span class="tag">Concept</span>
+                            <h3 id="card-title">Loading...</h3>
+                            <div class="card-hint"><i class="fa-solid fa-rotate"></i> Click to reveal animation</div>
+                        </div>
+                        <div class="card-face card-back">
+                            <h3>How it works:</h3>
+                            <div class="animation-box" id="animation-container">
+                                </div>
+                            <p id="card-desc">Explanation loading...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-secondary" onclick="prevCard()"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" onclick="nextCard()">Next Concept <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div id="sandbox" class="tab-content">
+                <h2>Interactive Code Lab</h2>
+                <p class="subtitle">Fix the bug or complete the snippet to clear the challenge!</p>
+                
+                <div class="sandbox-grid">
+                    <div class="editor-pane">
+                        <div class="pane-header"><i class="fa-solid fa-terminal"></i> Python Editor</div>
+                        <textarea id="code-editor" spellcheck="false"># Challenge: Fix the list append syntax
+fruits = ['apple', 'banana']
+# Add 'cherry' to the list correctly below:
+fruits.add('cherry') 
+print(fruits)</textarea>
+                        <button class="btn btn-success" onclick="runCode()"><i class="fa-solid fa-play"></i> Run & Verify</button>
+                    </div>
+                    
+                    <div class="output-pane">
+                        <div class="pane-header"><i class="fa-solid fa-square-poll-horizontal"></i> Execution & Output</div>
+                        <div id="console-output" class="console">Console ready...</div>
+                        <div id="validation-msg" class="validation"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
